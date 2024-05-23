@@ -93,13 +93,15 @@ app.post("/get-rides", async (req, res) => {
   try {
     const { startPoint, endPoint } = req.body;
     if (startPoint || endPoint) {
-      const rides = await ride.find({
-        startPoint: startPoint,
-        endPoint: endPoint,
-      });
+      const rides = await ride
+        .find({
+          startPoint: startPoint,
+          endPoint: endPoint,
+        })
+        .populate("userId");
       return res.status(200).json({ rides });
     } else {
-      const rides = await ride.find();
+      const rides = await ride.find().populate("userId");
       console.log(rides);
       return res.status(200).json({ rides });
     }
