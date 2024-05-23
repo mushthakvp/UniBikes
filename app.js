@@ -15,7 +15,6 @@ connectDB();
 app.use(express.json({ limit: "1000mb" }));
 app.use(express.urlencoded({ extended: true, limit: "1000mb" }));
 const mongoose = require("mongoose");
-const { start } = require("repl");
 
 const hostName = process.env.HOST_NAME || "localhost";
 const port = process.env.PORT || 3005;
