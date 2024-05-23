@@ -69,6 +69,7 @@ app.post("/create-profile", async (req, res) => {
     user.gender = req.body.gender;
     user.departMent = req.body.departMent;
     user.isRegistered = true;
+    user.collegeId = req.body.collegeId;
     await user.save();
     return res
       .status(200)
@@ -170,6 +171,10 @@ const loginModel = new mongoose.Schema({
   isRegistered: {
     type: Boolean,
     default: false,
+  },
+  collegeId: {
+    type: String,
+    default: "NIT Warangal",
   },
 });
 
