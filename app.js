@@ -102,7 +102,10 @@ app.post("/get-rides", async (req, res) => {
         .populate("showIntrests");
       return res.status(200).json({ rides });
     } else {
-      const rides = await ride.find().populate("userId");
+      const rides = await ride
+        .find()
+        .populate("userId")
+        .populate("showIntrests");
       console.log(rides);
       return res.status(200).json({ rides });
     }
