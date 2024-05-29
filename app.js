@@ -98,7 +98,8 @@ app.post("/get-rides", async (req, res) => {
           startPoint: startPoint,
           endPoint: endPoint,
         })
-        .populate("userId");
+        .populate("userId")
+        .populate("showIntrests");
       return res.status(200).json({ rides });
     } else {
       const rides = await ride.find().populate("userId");
